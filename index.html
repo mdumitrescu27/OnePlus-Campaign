@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnePlus Influencer Campaign</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 100mm;
+            margin: 0 auto;
+            background: white;
+            position: relative;
+            page-break-after: always;
+        }
+        
+        /* Cover Page */
+        .cover {
+            height: 297mm;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, #ff0000 0%, transparent 70%);
+            opacity: 0.1;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .cover h1 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: -2px;
+            z-index: 1;
+        }
+        
+        .cover .subtitle {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            z-index: 1;
+        }
+        
+        .cover .client-info {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ff0000;
+            z-index: 1;
+        }
+        
+        /* Content Pages */
+        .content-page {
+            padding: 60px;
+        }
+        
+        .section-header {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .section-header::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 100%;
+            background: #ff0000;
+        }
+        
+        .highlight-box {
+            background: #f8f8f8;
+            border-left: 4px solid #ff0000;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .metric-card {
+            background: #f8f8f8;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .metric-card:hover {
+            border-color: #ff0000;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .metric-number {
+            font-size: 36px;
+            font-weight: 900;
+            color: #ff0000;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            font-size: 14px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .creator-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .creator-card {
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .creator-card:hover {
+            background: #ff0000;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .creator-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .creator-category {
+            font-size: 12px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .strategy-point {
+            display: flex;
+            align-items: flex-start;
+            margin: 20px 0;
+        }
+        
+        .strategy-icon {
+            width: 40px;
+            height: 40px;
+            background: #ff0000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .results-section {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px;
+            margin: -60px;
+            margin-top: -100px;
+        }
+        
+        .results-section .section-header {
+            color: white;
+        }
+        
+        .results-section .section-header::before {
+            background: white;
+        }
+        
+        .testimonial {
+            font-style: italic;
+            font-size: 18px;
+            line-height: 1.8;
+            margin: 30px 0;
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            font-size: 60px;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            opacity: 0.3;
+        }
+        
+        @media print {
+            .page {
+                margin: 0;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cover Page -->
+    <div class="page cover">
+        <h1>Influencer Campaign<br>Case Study</h1>
+        <div class="subtitle">Multi-Creator Digital Strategy</div>
+        <div class="client-info">CLIENT: OnePlus × BENlabs</div>
+    </div>
+    
+    <!-- Page 2: Campaign Overview -->
+    <div class="page content-page">
+        <h2 class="section-header">Campaign Overview</h2>
+        
+        <div class="highlight-box">
+            <h3 style="margin-bottom: 10px;">The Challenge</h3>
+            <p>How do you authentically integrate a tech brand into content created by diverse creators spanning travel, comedy, handmade art, and niche categories? This was the strategic question that drove our OnePlus campaign.</p>
+        </div>
+        
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-number">26</div>
+                <div class="metric-label">Creators Activated</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-number">106</div>
+                <div class="metric-label">Pieces of Content</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-number">55M+</div>
+                <div class="metric-label">Combined Reach</div>
+            </div>
+        </div>
+        
+        <h3 style="margin-top: 40px; margin-bottom: 20px;">Strategic Approach</h3>
+        <div class="strategy-point">
+            <div class="strategy-icon">1</div>
+            <div>
+                <strong>Diverse Creator Selection</strong><br>
+                Curated a mix of creators across multiple verticals to showcase OnePlus's versatility and reach different audience segments.
+            </div>
+        </div>
+        <div class="strategy-point">
+            <div class="strategy-icon">2</div>
+            <div>
+                <strong>Authentic Integration</strong><br>
+                Developed custom content strategies that naturally incorporated OnePlus products into each creator's unique style and narrative.
+            </div>
+        </div>
+        <div class="strategy-point">
+            <div class="strategy-icon">3</div>
+            <div>
+                <strong>Cross-Platform Optimization</strong><br>
+                Leveraged multiple social platforms to maximize reach and engagement across different audience demographics.
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page 3: Creator Portfolio -->
+    <div class="page content-page">
+        <h2 class="section-header">Creator Portfolio</h2>
+        
+        <p style="margin-bottom: 30px;">The creators represented diverse content categories, each bringing their unique perspective to showcase OnePlus technology.</p>
+        
+        <div class="creator-grid">
+            <a href="https://www.instagram.com/reel/C-hoFRaqPL2/?hl=en" target="_blank" class="creator-card" style="text-decoration: none; color: inherit;">
+                <div class="creator-name">Younes Zarou</div>
+                <div class="creator-category">Entertainment</div>
+            </a>
+            <a href="https://www.instagram.com/p/C-GO_yjsn1S/" target="_blank" class="creator-card" style="text-decoration: none; color: inherit;">
+                <div class="creator-name">RENAN PACHECO</div>
+                <div class="creator-category">Lifestyle</div>
+            </a>
+            <a href="https://www.instagram.com/p/C892YK7sInc/?hl=en" target="_blank" class="creator-card" style="text-decoration: none; color: inherit;">
+                <div class="creator-name">Arron Crascall</div>
+                <div class="creator-category">Comedy</div>
+            </a>
+            <a href="https://www.instagram.com/p/C8myleash69/?hl=en" target="_blank" class="creator-card" style="text-decoration: none; color: inherit;">
+                <div class="creator-name">Helen Christie</div>
+                <div class="creator-category">Comedy</div>
+            </a>
+            <a href="https://www.instagram.com/p/C9C9icwoMWX/" target="_blank" class="creator-card" style="text-decoration: none; color: inherit;">
+                <div class="creator-name">Celyn Haf</div>
+                <div class="creator-category">Art & Design</div>
+            </a>
+            <a href="https://www.instagram.com/p/C9CprPpIFn8/" target="_blank" class="creator-card" style="text-decoration: none; color: inherit;">
+                <div class="creator-name">Jaime Silva</div>
+                <div class="creator-category">Entertainment</div>
+            </a>
+            <a href="https://www.instagram.com/p/C9ACYFxv0we/" target="_blank" class="creator-card" style="text-decoration: none; color: inherit;">
+                <div class="creator-name">Josh Glavin</div>
+                <div class="creator-category">Tech Reviews</div>
+            </a>
+            <a href="https://www.instagram.com/p/C9AiWZVNcno/?hl=en" target="_blank" class="creator-card" style="text-decoration: none; color: inherit;">
+                <div class="creator-name">Sam Fenton</div>
+                <div class="creator-category">Entertainment</div>
+            </a>
+            <a href="https://www.instagram.com/p/C9CsvJntO6T/" target="_blank" class="creator-card" style="text-decoration: none; color: inherit;">
+                <div class="creator-name">Emma</div>
+                <div class="creator-category">Travel</div>
+            </a>
+            <a href="https://www.instagram.com/p/C9AHiifM64s/" target="_blank" class="creator-card" style="text-decoration: none; color: inherit;">
+                <div class="creator-name">Sebastien Jefferies</div>
+                <div class="creator-category">Tech Reviews</div>
+            </a>
+            <a href="https://www.instagram.com/p/C9HdR2Nsdt9/?hl=en" target="_blank" class="creator-card" style="text-decoration: none; color: inherit;">
+                <div class="creator-name">Cristian Delgado</div>
+                <div class="creator-category">Adventure</div>
+            </a>
+            <a href="https://www.instagram.com/p/C9fOT6Ft1gA/" target="_blank" class="creator-card" style="text-decoration: none; color: inherit;">
+                <div class="creator-name">Vexx</div>
+                <div class="creator-category">Digital Art</div>
+            </a>
+            <a href="https://www.youtube.com/shorts/gnNyIIi-CyI" target="_blank" class="creator-card" style="text-decoration: none; color: inherit;">
+                <div class="creator-name">Macrofying</div>
+                <div class="creator-category">Macro Photography</div>
+            </a>
+        </div>
+        
+        <div class="highlight-box" style="margin-top: 40px;">
+            <h3 style="margin-bottom: 10px;">Content Innovation</h3>
+            <p>Each creator brought their unique storytelling approach, from Younes Zarou's mind-bending visual effects showcasing OnePlus camera capabilities to Helen Christie's artistic demonstrations highlighting the display quality for digital art creation.</p>
+        </div>
+    </div>
+    
+    <!-- Page 4: Results & Impact -->
+    <div class="page content-page">
+        <div class="results-section">
+
+            
+            <h3 style="color: white; margin-top: 0px; margin-bottom: 30px;">Key Achievements</h3>
+            
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 20px; padding-left: 30px; position: relative;">
+                    <span style="position: absolute; left: 0; color: #ff0000;">▸</span>
+                    Successfully integrated tech brand messaging across diverse content verticals
+                </li>
+                <li style="margin-bottom: 20px; padding-left: 30px; position: relative;">
+                    <span style="position: absolute; left: 0; color: #ff0000;">▸</span>
+                    Maintained authentic creator voice while highlighting product features
+                </li>
+                <li style="margin-bottom: 20px; padding-left: 30px; position: relative;">
+                    <span style="position: absolute; left: 0; color: #ff0000;">▸</span>
+                    Achieved above-industry-average engagement rates across all creator content
+                </li>
+                <li style="margin-bottom: 20px; padding-left: 30px; position: relative;">
+                    <span style="position: absolute; left: 0; color: #ff0000;">▸</span>
+                    Established long-term relationships with key influencers for future campaigns
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
